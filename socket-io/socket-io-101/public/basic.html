@@ -1,0 +1,27 @@
+<!-- socket.io.js is added by socket io server -->
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+      // socket.io.js is going to add io object to global scope
+
+      // console.log(io)
+
+      const socket=io("http://localhost:8000")
+
+      socket.on("connect",()=>{
+            console.log('socket id',socket.id);
+
+            socket.on("messageFromServer",(data)=>{
+                  console.log("data",data)
+            })
+        
+      })
+
+      socket.emit("messageFromClient", { data: "Hello from client socket", id: socket.id })
+      socket.io.on("reconnect",(data)=>{
+            console.log('reconnect')
+            console.log("data from reconnect ..",data)
+      })
+</script>
