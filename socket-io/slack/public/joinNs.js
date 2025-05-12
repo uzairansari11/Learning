@@ -9,7 +9,9 @@ function joinNs(element, nsData) {
     let roomListDiv = document.querySelector(".room-list");
     roomListDiv.innerHTML = null;
     clickedNsRooms.forEach((room) => {
-      roomListDiv.innerHTML += `<li><span class="glyphicon glyphicon-lock"></span>${room.roomTitle}</li>`;
+      roomListDiv.innerHTML += `<li><span class="fa-solid fa-${
+        room.privateRoom ? "lock" : "globe"
+      }"></span>${room.roomTitle}</li>`;
     });
     localStorage.setItem("lastNs", element.getAttribute("ns"));
   });
