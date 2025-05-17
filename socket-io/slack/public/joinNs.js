@@ -9,10 +9,30 @@ function joinNs(element, nsData) {
     let roomListDiv = document.querySelector(".room-list");
     roomListDiv.innerHTML = null;
     clickedNsRooms.forEach((room) => {
-      roomListDiv.innerHTML += `<li><span class="fa-solid fa-${
-        room.privateRoom ? "lock" : "globe"
-      }"></span>${room.roomTitle}</li>`;
+      const isPrivate = room.privateRoom ? true : false;
+      roomListDiv.innerHTML += `<li class="room" namespaceId="${
+        room.namespaceId
+      }">
+      <span class="fa-solid fa-${isPrivate ? "lock" : "globe"}"></span>${
+        room.roomTitle
+      }
+      </li>`;
+    });
+    let roomTitle;
+    console.log(clickedNs, "element");
+    const roomNodes = [...document.querySelectorAll(".room")];
+    roomNodes.forEach((elem, i) => {
+      console.log("element rooms", elem);
+      if (i === 0) {
+        roomTitle = elem.roomTitle;
+      }
+      elem.addEventListener("click", (e) => {
+        const roomTitle = e.target.innerText;
+        const namespaceId = elem.getAttribute("namespaceId");
+        joinRoom(roomTitle, namespaceId);
+      });
     });
     localStorage.setItem("lastNs", element.getAttribute("ns"));
+    joinRoom(roomTitle, clickedNs.roomId);
   });
 }

@@ -47,6 +47,7 @@ socket.on("nsList", (nsData) => {
   // console.log("lastNs", lastNs);
 
   namespacesAvailable.forEach((element) => {
+    console.log(element)
     joinNs(element, nsData);
   });
 
