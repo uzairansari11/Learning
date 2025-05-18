@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+  </head>
+  <body>
+    <form enctype="multipart/form-data" id="form">
+      <input type="file" name="photos" />
+      <button type="submit">Upload</button>
+    </form>
+
+    <script>
+      document.getElementById("form").addEventListener("submit", async (e) => {
+        e.preventDefault(); // stop page from refreshing
+
+        const form = document.getElementById("form");
+        const formData = new FormData(form); // captures the form including the file
+
+        try {
+          const response = await fetch("http://localhost:8000/uploads", {
+            method: "POST",
+            body: formData, // FormData includes the file under "photos"
+          });
+
+          const result = await response.text(); // or response.json() if you return JSON
+          alert(result);
+        } catch (err) {
+          console.error("Upload failed:", err);
+          alert("Error uploading file");
+        }
+      });
+    </script>
+  </body>
+</html>
