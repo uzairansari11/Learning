@@ -1,3 +1,4 @@
+```
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize("sequelize-db", "root", "Uzair@7007", {
@@ -246,3 +247,6 @@ User.update(
 ).then((res) => {
   console.log(res, "hey updates here");
 });
+ 
+
+```
