@@ -154,6 +154,6 @@ print(my_tuple)
 
 newSetShowDuplicate={1,2,3}
 
-newSetShowDuplicate.add({4:"4",5:"4"})
+newSetShowDuplicate.add(7)
 
 print(newSetShowDuplicate)
