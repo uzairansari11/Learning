@@ -1,11 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'food/index.css' %}" />
   </head>
   <body>
-      <h1>This is a template. </h1>
+    <ul>
+      {% for item in item_list %}
+      <img src="{{item.item_image}}" />
+      <li>
+        <a href="{% url 'food:details' item.id %}">
+          {{ item.id }} --- {{ item.item_name }} --- {{ item.desc }}
+        </a>
+      </li>
+      <li>{{item.item_price}}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

@@ -106,6 +106,8 @@ Migrations are Django’s way of propagating changes you make to your models int
 python manage.py makemigrations    # Generate migration files
 python manage.py migrate           # Apply to the database
 python manage.py sqlmigrate app 0001  # Preview SQL
+python manage.py migrate --plan # Will show planned migration
+
 ```
 
 ---
