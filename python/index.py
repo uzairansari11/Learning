@@ -157,3 +157,25 @@ newSetShowDuplicate={1,2,3}
 newSetShowDuplicate.add(7)
 
 print(newSetShowDuplicate)
+
+
+
+
+class User():
+      def __init__(self,name,age):
+           self.name=name or "maulin"
+           self.age=age or 0
+
+      def bark(self):
+          return f"{self.name} bhau bhau"
+
+
+maulinData = User("maulin",20)
+
+print((maulinData.__dir__()))
+
+
+name ="uzair"
+print("==========================+> ")
+
+print(name.__dir__())
