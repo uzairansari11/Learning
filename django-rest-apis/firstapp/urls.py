@@ -17,6 +17,6 @@ Including another URLconf
 from django.urls import path
 from firstapp import views
 urlpatterns = [
-    path("",views.student_list),
-    path('<int:pk>',views.student_detail)
+    path("",views.StudentList.as_view()),
+    path('<int:pk>',views.StudentDetails.as_view())
 ]
